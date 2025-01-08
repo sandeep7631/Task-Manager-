@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+    --accent-color: #fda085;
+    --bg-color: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    --container-bg: rgba(255, 255, 255, 0.9);
+    --text-color: #333;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--bg-color);
+    transition: background 0.3s;
+    padding: 20px;
+}
+
+.container {
+    background: var(--container-bg);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    backdrop-filter: blur(10px);
+    color: var(--text-color);
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: var(--accent-color);
+}
+
+.theme-controls {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#darkModeToggle, 
+#themeSelect,
+button {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    background: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+#taskInput, 
+#dueDateInput,
+#searchInput,
+select {
+    padding: 12px;
+    border: 2px solid var(--accent-color);
+    border-radius: 8px;
+    outline: none;
+    flex: 1;
+    min-width: 120px;
+    transition: border-color 0.3s;
+}
+
+#taskInput:focus,
+#dueDateInput:focus,
+#searchInput:focus,
+select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(253, 160, 133, 0.2);
+}
+
+.search-box {
+    margin: 20px 0;
+}
+
+#searchInput {
+    width: 100%;
+}
+
+/* Task List */
+ul {
+    list-style-type: none;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 2px solid var(--accent-color);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    flex: 1;
+}
+
+.category-label {
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: var(--accent-color);
+    color: white;
+    font-size: 0.8em;
+}
+
+.priority-high { color: #ff4444; }
+.priority-medium { color: #ffbb33; }
+.priority-low { color: #00C851; }
+
+/* Progress Bar */
+.progress-section {
+    margin: 25px 0;
+    text-align: left;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 12px;
+    margin: 8px 0;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background-color: var(--accent-color);
+    transition: width 0.5s ease;
+}
+
+/* List Controls */
+.list-controls {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.sort-controls,
+.filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Dark Mode */
+body.dark {
+    --bg-color: linear-gradient(135deg, #333333 0%, #444444 100%);
+    --container-bg: rgba(85, 85, 85, 0.9);
+    --text-color: #f0f0f0;
+}
+
+/* Checkbox styling */
+.task-complete-checkbox {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.task-complete-checkbox:checked + span {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    .input-section {
+        flex-direction: column;
+    }
+
+    .list-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
