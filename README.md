@@ -1,9 +1,8 @@
-Here's the updated `README.md` tailored to your project:
-
-```markdown
 # Task Manager
 
 A simple yet efficient Task Manager application built using HTML, CSS, and JavaScript to help users organize and manage their daily tasks.
+# Live Site
+https://sandeep7631.github.io/Task-Manager-/
 
 ## Features
 
